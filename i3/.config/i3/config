@@ -13,9 +13,9 @@ set $mod Mod4
 # set $mod Mod1
 
 #exec_always --no-startup-id feh --bg-scale ~/Soft/wallpaper/wall.jpg
-exec_always --no-startup-id nitrogen --set-scaled ~/.config/backgrounds/wall.jpg
+#exec_always --no-startup-id nitrogen --set-scaled ~/.config/backgrounds/wall.jpg
 
-exec_always --no-startup-id picom
+exec_always --no-startup-id picom -b --config ~/.config/picom/picom.conf
 #exec --no-startup-id xrdb -merge ~/.Xresources
 
 
@@ -24,8 +24,8 @@ exec_always --no-startup-id picom
 exec_always --no-startup-id i3-autolayout autolayout
 
 # kill any hanging polybar processes
-exec_always killall polybar
 exec_always --no-startup-id ~/.config/polybar/launch.sh
+
 
 #xrandr option ecran 2 vertical gauche
 exec_always --no-startup-id xrandr --output DP-0 --rotate right --left-of DP-2
@@ -46,7 +46,7 @@ exec --no-startup-id dex --autostart --environment i3
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+#exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -58,18 +58,24 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
+# Use brightnessctl to adjust the brightness of the screen
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
 
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
+
+# lock the current session
+bindsym $mod+l exec i3lock -c 000000
 
 # start a terminal
 bindsym $mod+Return exec alacritty
 bindsym $mod+o exec firefox
 
 # kill focused window
-bindsym $mod+Shift+q kill
+bindsym $mod+q kill
 
 # start rofi (a program launcher)
 bindsym $mod+space exec --no-startup-id rofi -show drun
@@ -93,10 +99,10 @@ bindsym $mod+Ctrl+Shift+Right resize grow width 10 px or 10 ppt
 
 
 # change focus
-bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+l focus right
+#bindsym $mod+h focus left
+#bindsym $mod+j focus down
+#bindsym $mod+k focus up
+#bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -246,4 +252,4 @@ client.background       #ffffff
 
 
 # font used by i3 for titles and bars
-font pango:Hack 10 
+font pango:Meslo LGM Nerd Font 10 
