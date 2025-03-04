@@ -12,6 +12,7 @@
 set $mod Mod4
 # set $mod Mod1
 
+
 #exec_always --no-startup-id feh --bg-scale ~/Soft/wallpaper/wall.jpg
 #exec_always --no-startup-id nitrogen --set-scaled ~/.config/backgrounds/wall.jpg
 
@@ -77,18 +78,18 @@ bindsym $mod+l exec i3lock -c 000000
 
 # start a terminal
 bindsym $mod+Return exec alacritty
-bindsym $mod+o exec firefox
+#bindsym $mod+o exec firefox
 
 # kill focused window
 bindsym $mod+q kill
 
 # start rofi (a program launcher)
 bindsym $mod+space exec --no-startup-id rofi -show drun
-bindsym $mod+d exec --no-startup-id rofi -show combi
+# Opened tabs
 bindsym $mod+Tab exec --no-startup-id rofi -show window
-# emojis
-bindsym $mod+Shift+x exec --no-startup-id rofi -show emoji -modi emoji
-# wifi
+# Emojis
+bindsym $mod+o exec --no-startup-id rofi -show emoji -modi emoji
+# Wifi
 bindsym $mod+Shift+w exec --no-startup-id ~/.config/rofi/rofi-wifi-menu.sh
 # Power menu 
 bindsym $mod+Shift+a exec --no-startup-id ~/.config/rofi/power-menu.sh
