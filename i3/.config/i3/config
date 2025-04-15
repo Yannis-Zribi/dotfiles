@@ -40,7 +40,7 @@ exec_always --no-startup-id dunst
 ## Clipboard Screenshots
 bindsym Print exec maim -u --select | xclip -selection clipboard -t image/png
 bindsym Ctrl+$mod+Print exec maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
-bindsym Ctrl+Print exec maim -u --select > ~/Images/Captures/$(date +"%Y_%m_%d_%H_%M_%S").png
+bindsym Ctrl+Print exec maim -u --select > ~/Pictures/Captures/$(date +"%Y_%m_%d_%H_%M_%S").png
 
 
 # Start XDG autostart .desktop files using dex. See also
