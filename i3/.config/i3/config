@@ -29,7 +29,7 @@ exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 
 #xrandr option ecran 2 vertical gauche
-exec_always --no-startup-id xrandr --output DP-0 --rotate right --left-of DP-2
+#exec_always --no-startup-id xrandr --output DP-0 --rotate right --left-of DP-2
 
 
 # dunst notification daemon
@@ -89,6 +89,8 @@ bindsym $mod+space exec --no-startup-id rofi -show drun
 bindsym $mod+Tab exec --no-startup-id rofi -show window
 # Emojis
 bindsym $mod+o exec --no-startup-id rofi -show emoji -modi emoji
+# Menu
+bindsym $mod+m exec --no-startup-id ~/.config/rofi/scripts/main_menu.sh
 # Wifi
 bindsym $mod+Shift+w exec --no-startup-id ~/.config/rofi/rofi-wifi-menu.sh
 # Power menu 
