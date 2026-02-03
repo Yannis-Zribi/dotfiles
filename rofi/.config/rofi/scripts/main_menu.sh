@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CHOSEN=$(printf "🖥️ Screen\n⚡ Power\n🌐 VPN\n" | rofi -dmenu)
+CHOSEN=$(printf "🖥️ Screen\n⚡ Power\n🌐 VPN\n" | rofi -dmenu -p "Menu")
 
 case "$CHOSEN" in
 "🖥️ Screen") ~/.config/rofi/scripts/screen_menu.sh ;;

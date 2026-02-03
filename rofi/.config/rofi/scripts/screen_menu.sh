@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CHOSEN=$(printf "🖥️ Duplicate Screen\n🖥️ Extend Screen\n🖥️ Stop Sharing Screen\n" | rofi -dmenu)
+CHOSEN=$(printf "🖥️ Duplicate Screen\n🖥️ Extend Screen\n🖥️ Stop Sharing Screen\n" | rofi -dmenu -p "Screen Menu")
 
 case "$CHOSEN" in
 "🖥️ Duplicate Screen") xrandr --output HDMI-A-0 --mode 1920x1080 --same-as eDP ;;
