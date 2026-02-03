@@ -1,12 +1,29 @@
 #!/bin/bash
+set -euo pipefail
 
-CHOSEN=$(printf "🟠 Reboot\n🔴 Shutdown\n🖥️ Duplicate Screen\n🖥️ Extend Screen\n🖥️ Stop Sharing Screen\n" | rofi -dmenu)
+ROFI_PROMPT="VPN WireGuard"
+
+CHOSEN=$(printf "🏠 Oros\n🇫🇷 France\n🇧🇪 Belgique\n❌ Déconnecter" | rofi -dmenu -p "$ROFI_PROMPT")
+
+[ -z "$CHOSEN" ] && exit 0
 
 case "$CHOSEN" in
-"🟠 Reboot") reboot ;;
-"🔴 Shutdown") poweroff ;;
-"🖥️ Duplicate Screen") xrandr --output HDMI-A-0 --mode 1920x1080 --same-as eDP ;;
-"🖥️ Extend Screen") xrandr --output HDMI-A-0 --auto --right-of eDP ;;
-"🖥️ Stop Sharing Screen") xrandr --output HDMI-A-0 --off ;;
+"🏠 Oros") TARGET="oros" ;;
+"🇫🇷 France") TARGET="fr" ;;
+"🇧🇪 Belgique") TARGET="be" ;;
+"❌ Déconnecter") TARGET="" ;;
 *) exit 1 ;;
 esac
+
+# ---------- Déconnecter tous les VPN WireGuard actifs ----------
+ACTIVE_IFACES=$(wg show interfaces)
+
+for IFACE in $ACTIVE_IFACES; do
+  systemctl stop "wg-quick@${IFACE}.service"
+done
+
+# ---------- Si on voulait juste déconnecter ----------
+[ -z "$TARGET" ] && exit 0
+
+# ---------- Connexion ----------
+systemctl start "wg-quick@${TARGET}.service"
