@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 sudo pacman -Syuu --noconfirm
 sudo pacman -S --noconfirm ly i3 i3lock yay fprintd libfprint alacritty picom polybar obsidian brightnessctl python-pipx docker wireguard-tools rofi rofi-emoji rofi-calc xclip maim zsh
 sudo systemctl enable --now ly@tty1.service
