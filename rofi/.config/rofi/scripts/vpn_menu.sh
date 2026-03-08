@@ -3,7 +3,7 @@ set -euo pipefail
 
 ROFI_PROMPT="VPN WireGuard"
 
-CHOSEN=$(printf "🏠 Oros\n🇫🇷 France\n🇧🇪 Belgique\n❌ Déconnecter" | rofi -dmenu -p "$ROFI_PROMPT")
+CHOSEN=$(printf "🏠 Oros\n🇫🇷 France\n🇧🇪 Belgique\n🇷🇴 Roumanie\n❌ Déconnecter" | rofi -dmenu -p "$ROFI_PROMPT")
 
 [ -z "$CHOSEN" ] && exit 0
 
@@ -11,6 +11,7 @@ case "$CHOSEN" in
 "🏠 Oros") TARGET="oros" ;;
 "🇫🇷 France") TARGET="fr" ;;
 "🇧🇪 Belgique") TARGET="be" ;;
+"🇷🇴 Roumanie") TARGET="ro" ;;
 "❌ Déconnecter") TARGET="" ;;
 *) exit 1 ;;
 esac
